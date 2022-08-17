@@ -1,0 +1,41 @@
+<nav ngxNavbarDynamicExpand class="navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">QuizzApp</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="collapse.toggle()"
+            aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="
+        navbar-toggler-icon
+        d-flex
+        align-items-center
+        justify-content-center
+      ">
+            </span>
+        </button>
+        <ngx-navbar-collapse id="main-nav" #collapse="ngxNavbarCollapse" style="justify-content:right">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a *ngIf="!isLoggedIn" class="nav-link" routerLink="signin" routerLinkActive="active">Log In <span
+                            class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a *ngIf="!isLoggedIn"  class="nav-link" routerLink="signup" routerLinkActive="active">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a *ngIf="!isLoggedIn" class="nav-link" href="#">About</a>
+                </li>
+                <li>
+                    <a *ngIf="isLoggedIn" class="nav-link" href="#" (click)="onLogout()">Logout</a>
+                </li>
+                <li>
+                    <a *ngIf="isLoggedIn && type==='ADMIN' " class="nav-link" routerLink="admin/profile" routerLinkActive="active">{{name}}</a>
+                </li>
+                <!-- <p>{{isLoggedIn}}</p> -->
+                <li>
+                    <a *ngIf="isLoggedIn && type==='NORMAL' " class="nav-link" routerLink="user/profile" routerLinkActive="active">{{name}}</a>
+                </li>
+            </ul>
+            <!-- *ngIf="isLoggedIn" -->
+        </ngx-navbar-collapse>
+    </div>
+</nav>
