@@ -1,1 +1,48 @@
-<p>admin-profile works!</p>
+<mat-card class="example-card ">
+    <h1>Your Profile Details</h1>
+    <mat-card-content>
+        <div class="bootstrap_wrapper">
+            <div class="container">
+                <div class="container text-center">
+                    <img src="../../../assets/profileimage.jpg" class="profile-image" />
+                    <h1 class="mt20">{{users.username}}</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1  ">
+                        <table class="table text-center table-striped">
+                            <tr>
+                                <td>UserName</td>
+                                <td>{{users.username}}</td>
+
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>{{users.email}}</td>
+                            </tr>
+                            <tr>
+                                <td>PhoneNumber</td>
+                                <td>{{users.mobileNo}}</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </mat-card-content>
+
+    <mat-card-actions class="text-center">
+
+        <a>
+            <button (click)="updateprofile(users.id)" mat-raised-button color="primary">Update</button>
+        </a>
+
+        <a>
+            <button (click)="changePassword(users.id)" mat-raised-button color="primary"
+                style="margin-left:10px ;">change password</button>
+        </a>
+
+    </mat-card-actions>
+
+</mat-card>

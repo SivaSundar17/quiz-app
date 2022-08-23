@@ -13,7 +13,7 @@
                                 [class.cross-validation-error]="signUpForm.errors?.['mustMatch']">
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input type="text" name="username" class="form-control" formControlName="name" />
+                                    <input type="text" [(ngModel)]="data.username" name="username" class="form-control" formControlName="name" />
                                     <div *ngIf="submitted && form['name'].errors?.['required']" style="color:red;">
                                         Name is required.
                                     </div>

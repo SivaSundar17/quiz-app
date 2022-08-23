@@ -19,7 +19,7 @@
                             class="sr-only"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a *ngIf="!isLoggedIn"  class="nav-link" routerLink="signup" routerLinkActive="active">Sign Up</a>
+                    <a *ngIf="!isLoggedIn" class="nav-link" routerLink="signup" routerLinkActive="active">Sign Up</a>
                 </li>
                 <li class="nav-item">
                     <a *ngIf="!isLoggedIn" class="nav-link" href="#">About</a>
@@ -28,11 +28,13 @@
                     <a *ngIf="isLoggedIn" class="nav-link" href="#" (click)="onLogout()">Logout</a>
                 </li>
                 <li>
-                    <a *ngIf="isLoggedIn && type==='ADMIN' " class="nav-link" routerLink="admin/profile" routerLinkActive="active">{{name}}</a>
+                    <a *ngIf="isLoggedIn && type==='ADMIN' " class="nav-link" [routerLink]="'admin/profile/'+id"
+                        routerLinkActive="active">{{name}}</a>
                 </li>
                 <!-- <p>{{isLoggedIn}}</p> -->
                 <li>
-                    <a *ngIf="isLoggedIn && type==='NORMAL' " class="nav-link" routerLink="user/profile" routerLinkActive="active">{{name}}</a>
+                    <a *ngIf="isLoggedIn && type==='NORMAL' " class="nav-link" routerLink="user/profile"
+                        routerLinkActive="active">{{name}}</a>
                 </li>
             </ul>
             <!-- *ngIf="isLoggedIn" -->

@@ -1,0 +1,9 @@
+.image{
+   
+    background-image: url("../../../../assets/exam.png");
+
+    background-size: cover;
+}
+.mr10{
+    margin-right: 10px;
+}

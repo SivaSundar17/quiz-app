@@ -1,0 +1,63 @@
+<diV class="container">
+    <div class="py-5 text-center">
+        <h2>checkout</h2>
+    </div>
+</diV>
+<div class="container">
+    <form (ngSubmit)="formSubmit()" ngNativeValidate>
+        <h4 class="mb-3">Payments</h4>
+        <div class="control">
+            <div>
+                <label class="radio">
+                    <input type="radio" value="CREDIT" [(ngModel)]="data.type" name="card">
+                    Credit Card
+                </label>
+            </div>
+            <div>
+                <label class="radio">
+                    <input type="radio" name="card" value="DEBIT" [(ngModel)]="data.type" checked>
+                    Debit card
+                </label>
+            </div>
+        </div>
+        <div class="row my-3 gy-3">
+            <div class="col-md-6">
+                <label for="name" class="form-label">
+                    Name on card
+                </label>
+                <input id="name" type="text" [(ngModel)]="data.name" name="cardName" class="form-control" required />
+                <small class="text-muted">Full name as displayed on your card</small>
+                <div class="invalid-feedback">Name on card is required</div>
+
+            </div>
+            <div class="col-md-6">
+                <label for="cardNum" class="form-label">
+                    Card Number
+                </label>
+
+                <input id="cardNum" type="text" [(ngModel)]="data.cardNumber" name="cardNo" class="form-control"
+                    required />
+                <div class="invalid-feedback">Card number is required</div>
+            </div>
+            <div class="col-md-3">
+                <label for="expiration" class="form-label">
+                    Expiry Date
+                </label>
+
+                <input id="expiration" type="text" [(ngModel)]="data.expiry" name="expiry" class="form-control">
+                <div class="invalid-feedback">Expiry date is required</div>
+            </div>
+            <div class="col-md-3">
+                <label for="cvv" class="form-label">
+                    CVV
+                </label>
+
+                <input id="cvv" type="text" [(ngModel)]="data.cvv" name="cvv" class="form-control" maxlength="3"
+                    minlength="3" required />
+                <div class="invalid-feedback">cvv is required</div>
+            </div>
+            <button class="btn btn-primary" type="submit">submit</button>
+        </div>
+    </form>
+
+</div>

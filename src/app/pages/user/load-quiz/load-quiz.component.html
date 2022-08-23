@@ -1,0 +1,34 @@
+<div class="form-group">
+    <input type="text" class="form-control" placeholder="search" style="margin-top: 10px;">
+  </div>
+<h1>Available Quizzes</h1>
+<mat-card class="mt10" *ngFor="let q of quiz">
+
+    <mat-card-header>
+        <div mat-card-avatar class="image"></div>
+        <mat-card-title>
+            {{q.title}}
+        </mat-card-title>
+
+    </mat-card-header>
+    <mat-card-content style="padding-top: 20px;">
+        {{q.description}}
+    </mat-card-content>
+    <mat-card-actions>
+        <!-- <button mat-flat-button  color="primary" class="mr10">Register</button> -->
+
+        <button mat-flat-button color="primary" class="mr10">View</button>
+        <button mat-flat-button (click)="onStartClick(q.id)" color="accent" class="mr10">Take test</button>
+        <button mat-stroked-button color="accent">
+            Max Marks: {{q.maxMarks}}
+        </button>
+        <button mat-stroked-button color="accent"> Questions: {{q.noOfQuestions}}</button>
+
+        <button mat-stroked-button color="accent"> Price:{{q.price}}</button>
+
+    </mat-card-actions>
+</mat-card>
+
+<!-- <div class="container text-center " style="margin-top:15px ;">
+    <button   mat-raised-button color="accent">Add New Quiz</button>
+</div>  -->

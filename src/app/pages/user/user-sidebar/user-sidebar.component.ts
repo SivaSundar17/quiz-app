@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-sidebar',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-sidebar.component.css']
 })
 export class UserSidebarComponent implements OnInit {
+  str!: string | null 
+  id!: number;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  onViewProfileClick(){
+    this.str=localStorage.getItem('id');
+    this.id=Number(this.str);
+    console.log("sidebar"+this.id)
+    this.router.navigate(['/user/profile/'+this.id]);
   }
 
 }

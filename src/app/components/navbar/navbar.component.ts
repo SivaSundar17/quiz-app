@@ -11,6 +11,8 @@ export class NavbarComponent implements OnInit {
   type!: string | null;
   name!: string | null;
   mail!: string | null;
+  id!:number;
+  str!:string|null;
 
   constructor(private userService: UserService) { }
 
@@ -30,6 +32,9 @@ export class NavbarComponent implements OnInit {
 
     this.type = localStorage.getItem('type');
     this.name = localStorage.getItem('name')
+    this.str=localStorage.getItem('id');
+    this.id=Number(this.str);
+
     if (localStorage.length != 0) {
       this.isLoggedIn = true
     }

@@ -1,0 +1,25 @@
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+        <div class="row mt20">
+            <div class="col-md-4" *ngFor="let file of data">
+                <mat-card class="mb20">
+                    <h1>{{file.fileName}}</h1>
+                    <div id="show">
+                        <p id="open">{{file.description}} <a id="myButton"></a></p>
+                        <!-- <p id="content">Suspendisse a dolor nulla. Praesent a egestas diam. </p> -->
+                    </div>
+                    <link rel="stylesheet"
+                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                    <p><button (click)="clickedfun(file.id,file.fileName)" class="btn-primary"><i class="fa fa-download"></i>
+                            Download</button></p>
+                    <p><button (click)="clicked(file.id)" class="btn-primary"> Delete</button></p>
+                    <p><button (click)="onUpdateClick(file.id)" class="btn-primary"> Update</button></p>
+
+                    <!-- <p><button [routerLink]="'admin/materialUpdate/'+file.id" class="btn-primary"> Update</button></p> -->
+                    <!-- [routerLink]="'/admin/quiz/' + q.qId" -->
+                </mat-card>
+            </div>
+            <p><button (click)="onAddClick()" class="btn-primary"> Add </button></p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<mat-card>
+    <h1>Update Quizz</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {{quiz | json}}
+                <form *ngIf="quiz" (ngSubmit)="onSubmit()">
+                    <mat-form-field class="w100">
+                        <mat-label>
+                            Enter Title
+                        </mat-label>
+                        <input type="text" disabled [(ngModel)]="quiz.title" name="title" placeholder="Enter here"
+                            matInput />
+                    </mat-form-field>
+                    <mat-form-field class="w100 pt10">
+                        <mat-label>
+                            Enter Description
+                        </mat-label>
+                        <textarea type="text" [(ngModel)]="quiz.description" name="description" placeholder="Enter here"
+                            row="5" matInput>
+                            </textarea>
+                    </mat-form-field>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <mat-form-field class="w100 pt10" apperance="fill">
+                                <mat-label>
+                                    Max Marks
+                                </mat-label>
+                                <input type="text" [(ngModel)]="quiz.maxMarks" name="maxmax" placeholder="Enter here"
+                                    matInput />
+
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field class="w100 pt10" apperance="fill">
+                                <mat-label>
+                                    No of Questions
+                                </mat-label>
+                                <input type="text" [(ngModel)]="quiz.noOfQuestions" name="number of question"
+                                    placeholder="Enter here" matInput />
+
+                            </mat-form-field>
+
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field class="w100 pt10" apperance="fill">
+                                <mat-label>
+                                    Price
+                                </mat-label>
+                                <input type="text" [(ngModel)]="quiz.price" name="price" placeholder="Enter here"
+                                    matInput />
+
+                            </mat-form-field>
+
+                        </div>
+                    </div>
+                    <div class="container text-center ml10">
+                        <button mat-raised-button color="accent" class="ml10" type="submit">Update</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</mat-card>

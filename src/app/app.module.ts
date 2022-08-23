@@ -15,12 +15,31 @@ import { ConfirmPasswordValidatorDirective } from './shared/confirm-password-val
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
 import { AdminSidebarComponent } from './pages/admin/admin-sidebar/admin-sidebar.component';
-import {MatCardModule} from '@angular/material/card';
-import {MatListModule} from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 import { UserSidebarComponent } from './pages/user/user-sidebar/user-sidebar.component';
-import { AdminProfileComponent } from './pages/admin/admin-profile/admin-profile.component';
 import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
-
+import { PaymentGateComponent } from './pages/payment-gate/payment-gate.component';
+import { MaterialpageComponent } from './pages/admin/materialpage/materialpage.component';
+import { MaterialUploadComponent } from './pages/admin/material-upload/material-upload.component';
+import { MaterialUpdateComponent } from './pages/admin/material-update/material-update.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { MatSelectModule } from "@angular/material/select";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { AdminProfileComponent } from './pages/admin/admin-profile/admin-profile.component';
+import { UpdateprofileComponent } from './pages/admin/updateprofile/updateprofile.component';
+import { ChangePasswordComponent } from './pages/admin/change-password/change-password.component';
+import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.component';
+import { UpdateQuizzComponent } from './pages/admin/update-quizz/update-quizz.component';
+import { ViewQuizQuestionsComponent } from './pages/admin/view-quiz-questions/view-quiz-questions.component';
+import { UpdateUserProfileComponent } from './pages/user/update-user-profile/update-user-profile.component';
+import { ChangeUserPasswordComponent } from './pages/user/change-user-password/change-user-password.component';
+import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
+import { InstructionsComponent } from './pages/user/instructions/instructions.component';
+import { StartComponent } from './pages/start/start.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,8 +51,23 @@ import { UserProfileComponent } from './pages/user/user-profile/user-profile.com
     UserDashboardComponent,
     AdminSidebarComponent,
     UserSidebarComponent,
+    UserProfileComponent,
+    PaymentGateComponent,
+    MaterialpageComponent,
+    MaterialUploadComponent,
+    MaterialUpdateComponent,
     AdminProfileComponent,
-    UserProfileComponent
+    UpdateprofileComponent,
+    ChangePasswordComponent,
+    ViewQuizzesComponent,
+    UpdateQuizzComponent,
+    ViewQuizQuestionsComponent,
+    UpdateUserProfileComponent,
+    ChangeUserPasswordComponent,
+    LoadQuizComponent,
+    InstructionsComponent,
+    StartComponent
+
 
   ],
   imports: [
@@ -45,7 +79,13 @@ import { UserProfileComponent } from './pages/user/user-profile/user-profile.com
     FormsModule, ReactiveFormsModule,
     HttpClientModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatInputModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatButtonModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

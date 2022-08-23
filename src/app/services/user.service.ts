@@ -12,7 +12,7 @@ export class UserService {
   flag = false
   type!: string
   currentUser: any;
-  name!:string;
+  name!: string;
   public loginStatusSubject = new Subject<boolean>();
 
   constructor(private http: HttpClient) {
@@ -46,10 +46,10 @@ export class UserService {
     console.log(this.flag)
     return this.flag;
   }
-  setUsername(name:string){
-    this.name=name;
+  setUsername(name: string) {
+    this.name = name;
   }
-  getUsername():string{
+  getUsername(): string {
     return this.name
   }
   getCurrentUser(email: string): Observable<any> {
@@ -57,11 +57,13 @@ export class UserService {
 
   }
 
-  public storeDetails(data: string,user:User) {
+  public storeDetails(data: string, user: User) {
     //console.log("storeDetails()"+data);
+    console.log("local storage is called")
     localStorage.setItem('data', data)
-    localStorage.setItem('type',this.type)
-    localStorage.setItem('name',user.username)
+    localStorage.setItem('type', this.type)
+    localStorage.setItem('name', user.username)
+    localStorage.setItem('id', user.id.toString());
     //console.log("here"+localStorage.getItem('data'));
   }
 
@@ -70,5 +72,6 @@ export class UserService {
     localStorage.clear();
     localStorage.removeItem('data');
   }
+
 
 }
