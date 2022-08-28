@@ -12,6 +12,8 @@ export class LoadQuizComponent implements OnInit {
 
   id!: number
   quiz!: Quiz[];
+  search:any;
+  
   constructor(private quizservice: QuizService,
     private route: ActivatedRoute, private router: Router) { }
 
@@ -24,7 +26,11 @@ export class LoadQuizComponent implements OnInit {
 
   }
 
-  onStartClick(id: number) {
-    this.router.navigate(['user/instructions/' + id])
+  onStartClick(id: number,title:string) {
+    this.router.navigate(['user/instructions/' + id+"/"+title])
   }
+  onMaterialsClick(id:number,title:string){
+    this.router.navigate(['/user/materials',id,title])
+  }
+
 }

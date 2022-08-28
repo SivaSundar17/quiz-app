@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MaterialService } from 'src/app/services/material.service';
 
 @Component({
@@ -12,11 +12,12 @@ export class MaterialUploadComponent implements OnInit {
   submitted = false;
   files!: FileList
   desc!: string;
+  qId!:number;
 
-  constructor(private materialService: MaterialService,private router:Router) { }
+  constructor(private materialService: MaterialService,private router:Router,private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    this.qId =this._route.snapshot.params['id'] ;
   }
 
 
@@ -59,6 +60,7 @@ export class MaterialUploadComponent implements OnInit {
     for (var i = 0; i < this.files.length; i++) {
       formData.append('file', this.files[i], this.files[i].name);
       formData.append('desc', this.desc);
+      formData.append('qid',String(this.qId));
     }
     this.materialService.upload(formData).subscribe(event => {
       console.log(event);
@@ -66,7 +68,7 @@ export class MaterialUploadComponent implements OnInit {
     }
     );
     alert("material uploaded")
-    this.router.navigate(['admin/materials'])
+    this.router.navigate(['admin/viewQuizzes']);
   }
 
   // private resportProgress(event: HttpEvent<string[] | Blob>){

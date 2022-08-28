@@ -13,6 +13,11 @@ export class QuizService {
   constructor(private _http: HttpClient) { }
   price!: Number
 
+  //add quiz
+
+  public addTest(_test: { title: string; description: string; maxMarks: string; noOfQuestions: string; price: string; }) {
+    return this._http.post(`${baseURL}/quiz/addQuiz`, _test);
+  }
 
   getQuizzes(): Observable<Quiz[]> {
     return this._http.get<Quiz[]>(`${this.baseURL + "/getQuiz"}`);
@@ -29,7 +34,7 @@ export class QuizService {
   getQuiz(id: number): Observable<any> {
     return this._http.get<Quiz[]>(this.baseURL + "/" + id);
   }
-
+  
   //check if user is registred while loading quiz
   registeredStatus(id: number, qid: number): Observable<any> {
     return this._http.get<QuizPaymentStatus>(baseURL + "/quizPaymentStatus/paymentStatus/" + id + "/" + qid);
@@ -39,6 +44,14 @@ export class QuizService {
   updateRegistrationStatus(id: number, quizPaymentStatus: QuizPaymentStatus) {
     return this._http.put(baseURL + "/quizPaymentStatus/" + id, quizPaymentStatus);
   }
+
+  //add registration
+  addRegistrationStatus(quizPaymentStatus:any){
+    return this._http.post(baseURL+"/quizPaymentStatus/",quizPaymentStatus);
+  }
+
+
+
 
 
 }

@@ -1,4 +1,4 @@
-<h1 style="margin-top:10px;">View Materials</h1>
+<h1>Materials for {{title}} Quiz</h1>
 <div class="bootstrap-wrapper">
     <div class="container-fluid">
         <div class="row mt20">
@@ -13,11 +13,6 @@
                         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                     <p><button (click)="clickedfun(file.id,file.fileName)" class="btn-primary"><i class="fa fa-download"></i>
                             Download</button></p>
-                    <p><button (click)="clicked(file.id)" class="btn-primary"> Delete</button></p>
-                    <p><button (click)="onUpdateClick(file.id)" class="btn-primary"> Update</button></p>
-
-                    <!-- <p><button [routerLink]="'admin/materialUpdate/'+file.id" class="btn-primary"> Update</button></p> -->
-                    <!-- [routerLink]="'/admin/quiz/' + q.qId" -->
                 </mat-card>
             </div>
         </div>

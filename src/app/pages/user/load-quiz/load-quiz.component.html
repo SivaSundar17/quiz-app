@@ -1,8 +1,8 @@
 <div class="form-group">
-    <input type="text" class="form-control" placeholder="search" style="margin-top: 10px;">
+    <input type="text"  [(ngModel)]="search" class="form-control" placeholder="search" style="margin-top: 10px;">
   </div>
-<h1>Available Quizzes</h1>
-<mat-card class="mt10" *ngFor="let q of quiz">
+<h1>Quiz Topics</h1>
+<mat-card class="mt10" *ngFor="let q of quiz | filter:search">
 
     <mat-card-header>
         <div mat-card-avatar class="image"></div>
@@ -18,7 +18,8 @@
         <!-- <button mat-flat-button  color="primary" class="mr10">Register</button> -->
 
         <button mat-flat-button color="primary" class="mr10">View</button>
-        <button mat-flat-button (click)="onStartClick(q.id)" color="accent" class="mr10">Take test</button>
+        <button mat-flat-button (click)="onStartClick(q.id,q.title)" color="accent" class="mr10">Take test</button>
+        <button mat-flat-button  (click)="onMaterialsClick(q.id,q.title)"  color="accent" class="mr10">Materials</button>
         <button mat-stroked-button color="accent">
             Max Marks: {{q.maxMarks}}
         </button>

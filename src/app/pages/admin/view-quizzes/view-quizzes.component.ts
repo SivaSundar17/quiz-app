@@ -11,6 +11,7 @@ import { QuizService } from 'src/app/services/quiz.service';
 export class ViewQuizzesComponent implements OnInit {
   quiz!: Quiz[];
   location: any;
+  search:any;
   constructor(private quizservice: QuizService,
     private router: Router,
   ) { }
@@ -45,6 +46,13 @@ export class ViewQuizzesComponent implements OnInit {
 
   onQuestionsClick(id: number, title: string) {
     this.router.navigate(['/admin/viewQuestions', id, title]);
+  }
+
+  addQuizClick(){
+    this.router.navigate(['/admin/addQuiz']);
+  }
+  onMaterialsClick(id:number,title:string){
+    this.router.navigate(['/admin/materials',id,title])
   }
 
 }

@@ -1,28 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Material } from 'src/app/model/materials';
 import { MaterialService } from 'src/app/services/material.service';
 
 @Component({
-  selector: 'app-materialpage',
-  templateUrl: './materialpage.component.html',
-  styleUrls: ['./materialpage.component.css']
+  selector: 'app-quiz-materials',
+  templateUrl: './quiz-materials.component.html',
+  styleUrls: ['./quiz-materials.component.css']
 })
-export class MaterialpageComponent implements OnInit {
-
-
+export class QuizMaterialsComponent implements OnInit {
   public data: Array<Material> = [];
   desc!:string
-
-  constructor(private materialService:MaterialService,private router: Router,private http: HttpClient) { }
+  qId!: number;
+  title!:string;
+  constructor(private materialService:MaterialService,private _route: ActivatedRoute,private router: Router,private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.getMaterialList();
+    this.qId = this._route.snapshot.params['id'];
+    this.title=this._route.snapshot.params['title']
+    this.getQuizMaterials();
   }
 
-  getMaterialList(){
-    this.materialService.getMaterials().subscribe(val => {
+  getQuizMaterials(){
+    this.materialService.getMaterialsByQuizId(this.qId).subscribe(val => {
       this.data = val;
       val.forEach(element => {
         element.fileName=element.fileName.split('.pdf').join("");
@@ -78,7 +79,8 @@ export class MaterialpageComponent implements OnInit {
   }
 
   onAddClick(){
-    this.router.navigate(['admin/materialUpload'])
+    this.router.navigate(['admin/materialUpload',this.qId])
 
   }
+
 }

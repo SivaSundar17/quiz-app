@@ -39,7 +39,15 @@ import { ChangeUserPasswordComponent } from './pages/user/change-user-password/c
 import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
 import { StartComponent } from './pages/start/start.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AddQuizzComponent } from './pages/admin/add-quizz/add-quizz.component';
+import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
+import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
+import { QuizMaterialsComponent } from './pages/admin/quiz-materials/quiz-materials.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ViewMaterialsComponent } from './pages/user/view-materials/view-materials.component';
+import { ViewRevenueComponent } from './pages/admin/view-revenue/view-revenue.component';
+import { MatTableModule } from '@angular/material/table'  
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,9 +74,13 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ChangeUserPasswordComponent,
     LoadQuizComponent,
     InstructionsComponent,
-    StartComponent
-
-
+    StartComponent,
+    AddQuizzComponent,
+    AddQuestionComponent,
+    UpdateQuestionComponent,
+    QuizMaterialsComponent,
+    ViewMaterialsComponent,
+    ViewRevenueComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +97,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    Ng2SearchPipeModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -21,6 +21,12 @@ import { StartComponent } from './pages/start/start.component';
 import { UpdateUserProfileComponent } from './pages/user/update-user-profile/update-user-profile.component';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
 import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
+import { AddQuizzComponent } from './pages/admin/add-quizz/add-quizz.component';
+import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
+import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
+import { QuizMaterialsComponent } from './pages/admin/quiz-materials/quiz-materials.component';
+import { ViewMaterialsComponent } from './pages/user/view-materials/view-materials.component';
+import { ViewRevenueComponent } from './pages/admin/view-revenue/view-revenue.component';
 
 
 const routes: Routes = [
@@ -43,7 +49,7 @@ const routes: Routes = [
         component: MaterialpageComponent
       },
       {
-        path: 'materialUpload',
+        path: 'materialUpload/:id',
         component: MaterialUploadComponent
       },
       {
@@ -53,6 +59,10 @@ const routes: Routes = [
       {
         path: 'changePassword/:id',
         component: ChangePasswordComponent
+      },
+      {
+        path: 'addQuiz',
+        component: AddQuizzComponent
       },
       {
         path: 'viewQuizzes',
@@ -65,6 +75,22 @@ const routes: Routes = [
       {
         path: 'viewQuestions/:id/:title',
         component: ViewQuizQuestionsComponent
+      },
+      {
+        path: 'addQuestion/:id/:title',
+        component: AddQuestionComponent
+      },
+      {
+        path:'updateQuestion/:id',
+        component: UpdateQuestionComponent
+      },
+      {
+        path:'materials/:id/:title',
+        component:QuizMaterialsComponent
+      },
+      {
+        path:'revenue',
+        component:ViewRevenueComponent
       }
 
     ]
@@ -89,15 +115,19 @@ const routes: Routes = [
         component: LoadQuizComponent
       },
       {
-        path: 'instructions/:id',
+        path: 'instructions/:id/:title',
         component:InstructionsComponent
+      },
+      {
+        path:'materials/:id/:title',
+        component:ViewMaterialsComponent
       }
     ]
   },
 
   { path: 'checkout', component: PaymentGateComponent },
   {
-    path: 'start/:id',
+    path: 'start/:id/:title',
     component:StartComponent
   }
 

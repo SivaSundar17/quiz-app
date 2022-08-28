@@ -12,11 +12,11 @@ import { QuizService } from 'src/app/services/quiz.service';
 export class InstructionsComponent implements OnInit {
   id!: number
   quiz = {} as Quiz;
-  isRegistered!: boolean|null;
+  isRegistered!: boolean | null;
   uId!: number | null;
-  status={} as QuizPaymentStatus;
+  status = {} as QuizPaymentStatus;
   constructor(private quizservice: QuizService,
-    private route: ActivatedRoute,private router: Router) { }
+    private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     const str = localStorage.getItem('id');
@@ -28,26 +28,29 @@ export class InstructionsComponent implements OnInit {
     })
 
     this.quizservice.registeredStatus(this.uId, this.id).subscribe(data => {
-      this.status=data;
+      this.status = data;
       //console.log(data);
-      if(data==null){
-        this.isRegistered=false;
+      if (data == null) {
+        this.isRegistered = false;
       }
-      else{
-      this.isRegistered=data.paymentStatus;
+      else {
+        this.isRegistered = data.paymentStatus;
       }
       // console.log(this.isRegistered);
 
     });
   }
 
-  onClickRegister(){
+  onClickRegister() {
     this.router.navigate(['checkout'])
+    const strPrice = String(this.quiz.price);
+    localStorage.setItem("amount", strPrice);
     localStorage.setItem('qid', String(this.id));
+    localStorage.setItem('title', this.quiz.title);
 
   }
-  startQuiz(){
-    this.router.navigate(['/start/',this.quiz.id]);
+  startQuiz() {
+    this.router.navigate(['/start/', this.quiz.id, this.quiz.title]);
   }
 
 }

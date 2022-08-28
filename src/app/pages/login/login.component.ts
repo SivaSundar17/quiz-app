@@ -81,8 +81,8 @@ export class LoginComponent implements OnInit {
         this.userService.logout();
         this.invalid = true
       }
-
     });
+
 
   }
 }

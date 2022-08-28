@@ -58,4 +58,9 @@ export class MaterialService {
     return fileid;
   }
 
+  getMaterialsByQuizId(qid:number): Observable<Material[]> {
+    console.log(baseURL + '/files/'+qid);
+    return this.http.get<Material[]>(baseURL + '/files/'+qid);
+  }
+
 }

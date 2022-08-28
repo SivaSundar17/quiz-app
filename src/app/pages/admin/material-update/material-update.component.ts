@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Material } from 'src/app/model/materials';
 import { MaterialService } from 'src/app/services/material.service';
 
@@ -18,7 +18,7 @@ export class MaterialUpdateComponent implements OnInit {
   public data:Array<Material> = [];
 
   constructor(private materialService: MaterialService,
-    private _route: ActivatedRoute) { }
+    private _route: ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
     this.fileid = this._route.snapshot.params['id'];
@@ -29,7 +29,6 @@ export class MaterialUpdateComponent implements OnInit {
         //console.log(this.data.fileName);
         this.data.forEach(element => {
           if(element.id==this.fileid){
-            console.log("yep")
             this.fileName=element.fileName;
             this.desc=element.description;
           }
@@ -98,6 +97,9 @@ export class MaterialUpdateComponent implements OnInit {
     this.materialService.updateFiledesc(this.fileid,formData).subscribe(ele=>{
       console.log(ele);
     });
+
+    alert("Description has been updated .")
+    this.router.navigate(['admin/viewQuizzes'])
   }
 
   // private resportProgress(event: HttpEvent<string[] | Blob>){

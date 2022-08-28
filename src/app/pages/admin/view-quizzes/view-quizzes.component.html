@@ -1,5 +1,11 @@
 <!-- <h1 style="text-align: center;">yooooo</h1> -->
-<mat-card class="mt10" *ngFor="let q of quiz">
+
+<div class="bootstrap-wrapper" >
+    <input type="text" [(ngModel)]="search" style="width:80%;margin-top:10px;margin-left:10%;" placeholder="search">
+    <h1 style="margin: top 10px;margin-left: 5px;">
+        Quiz Topics
+      </h1>
+<mat-card class="mt10" *ngFor="let q of quiz | filter:search" style="margin: 10px;">
     <!-- //<h1 style="padding; ;">Available Quizes</h1> -->
     <mat-card-header>
         <div mat-card-avatar class="image"></div>
@@ -13,11 +19,11 @@
     </mat-card-content>
     <mat-card-actions>
         <button mat-flat-button color="accent" (click)="onQuestionsClick(q.id,q.title)">Questions</button>
+        <button mat-flat-button color="accent" style="margin-left:10px;" (click)="onMaterialsClick(q.id,q.title)" >Materials</button>
         <button mat-stroked-button color="accent">
             Max Marks: {{q.maxMarks}}
         </button>
         <button mat-stroked-button color="accent"> Questions: {{q.noOfQuestions}}</button>
-
         <button mat-stroked-button color="accent"> Price:{{q.price}}</button>
         <button mat-flat-button color="accent" (click)="updateQuiz(q.id)">
             Update
@@ -29,5 +35,6 @@
 </mat-card>
 
 <div class="container text-center " style="margin-top:15px ;">
-    <button mat-raised-button color="accent" [routerLink]="'/add-quiz'">Add New Quiz</button>
+    <button mat-raised-button color="accent" (click)="addQuizClick()">Add New Quiz</button>
+</div>
 </div>

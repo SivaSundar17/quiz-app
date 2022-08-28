@@ -1,0 +1,71 @@
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+        <mat-card class="sa1">
+            <h1>Total Revenue&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;Rs&nbsp;&nbsp;&nbsp;&nbsp;{{totalRev}}</h1>
+        </mat-card>
+        <br>
+        <mat-card class="sa1">
+            <div class="row ">
+                <div class="col-md-4">
+                    <h1>Statement</h1>
+                </div>
+                <form>
+                    <div class="col-md-4">
+
+                        <mat-form-field>
+                            <mat-label>Start Date</mat-label>
+                            <input [(ngModel)]="sDate" name="sDate" required type="date" matInput />
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field>
+                            <mat-label>End Date</mat-label>
+                            <input [(ngModel)]="eDate" name="eDate" required type="date" matInput />
+                        </mat-form-field>
+                    </div>
+                    <button type="submit" (click)="fetchRevenues()">search</button>
+                </form>
+            </div>
+        </mat-card>
+        <br>
+        <table *ngIf="isSearched" mat-table [dataSource]="dataSource" class="mat-elevation-z8 sa1">
+
+            <ng-container matColumnDef="userId">
+                <th mat-header-cell *matHeaderCellDef> User Id</th>
+                <td mat-cell *matCellDef="let data"> {{data.user.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="userName">
+                <th mat-header-cell *matHeaderCellDef> User Name </th>
+                <td mat-cell *matCellDef="let data"> {{data.user.username}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="quizid">
+                <th mat-header-cell *matHeaderCellDef> Quiz Id </th>
+                <td mat-cell *matCellDef="let data"> {{data.quiz.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="quizname">
+                <th mat-header-cell *matHeaderCellDef> Quiz Name </th>
+                <td mat-cell *matCellDef="let data"> {{data.quiz.title}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef> Date </th>
+                <td mat-cell *matCellDef="let data"> {{data.date}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="amount">
+                <th mat-header-cell *matHeaderCellDef> Amount </th>
+                <td mat-cell *matCellDef="let data"> {{data.quiz.price}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <br>
+        <mat-card class="sa1" *ngIf="isSearched">
+            <h1>Total&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;Rs &nbsp;&nbsp;&nbsp;&nbsp; {{statementTotal}}</h1>
+        </mat-card>
+    </div>
+</div>

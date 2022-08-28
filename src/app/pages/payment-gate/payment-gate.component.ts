@@ -2,6 +2,7 @@ import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Card } from 'src/app/model/card';
 import { QuizPaymentStatus } from 'src/app/model/quizPaymentStatus';
+
 import { CheckoutService } from 'src/app/services/checkout.service';
 import { QuizService } from 'src/app/services/quiz.service';
 
@@ -16,7 +17,24 @@ export class PaymentGateComponent implements OnInit {
   isValid!: boolean;
   qid!: number;
   uId!: number;
+  title!: string | null;
   status = {} as QuizPaymentStatus;
+
+  statusObj = {
+    paymentStatus: false,
+    quizId: 0,
+    userId: 0
+  }
+
+  rev = {
+    amount: 0,
+    user: {
+      id: 0
+    },
+    quiz: {
+      id: 0
+    }
+  }
 
   constructor(private checkoutService: CheckoutService, private router: Router, private quizService: QuizService) { }
 
@@ -38,25 +56,43 @@ export class PaymentGateComponent implements OnInit {
         this.qid = Number(str);
         let str2 = localStorage.getItem('id');
         this.uId = Number(str2);
+        this.title = localStorage.getItem('title');
         //this.quizService.registeredStatus
         this.quizService.registeredStatus(this.uId, this.qid).subscribe(data => {
           this.status = data;
-          //console.log(data);
+          // console.log(data);
           if (data == null) {
             //this.isRegistered=false;
+            //console.log(this.uId+" "+this.qid);
+            this.statusObj.userId = this.uId;
+            this.statusObj.paymentStatus = true,
+              this.statusObj.quizId = this.qid
+            this.quizService.addRegistrationStatus(this.statusObj).subscribe(
+              data => {
+                //console.log(this.data);
+                this.addRevenue();
+                this.router.navigate(['user/instructions/' + this.qid + "/" + this.title])
+                localStorage.removeItem("qid");
+              }
+            );
           }
           else {
             this.status = data;
-            this.status.paymentStatus=true;
+            this.status.paymentStatus = true;
+            this.quizService.updateRegistrationStatus(this.status.id, this.status).subscribe(
+              data => {
+                //this.gotoprofile();
+                console.log(data);
+                this.addRevenue();
+                this.router.navigate(['user/instructions/' + this.qid + "/" + this.title])
+                localStorage.removeItem("qid");
+                localStorage.removeItem("title")
+              });
           }
           // console.log(this.isRegistered);
-
         });
-        this.router.navigate(['user/instructions/' + this.qid])
-        localStorage.removeItem("qid");
-
-
       }
+
       else {
         alert("paymeant unsuccessfull")
       }
@@ -73,5 +109,19 @@ export class PaymentGateComponent implements OnInit {
   //     alert("payment unsuccessfull")
   //   }
   //}
+
+  addRevenue() {
+    this.rev.quiz.id = this.qid;
+    this.rev.user.id = this.uId;
+    const amount = Number(localStorage.getItem("amount"))
+    this.rev.amount = amount;
+    this.checkoutService.addRevenue(this.rev).subscribe(
+      data => {
+        // console.log(this.rev);
+        console.log("Statement added");
+        localStorage.removeItem("amount");
+      }
+    )
+  }
 
 }
