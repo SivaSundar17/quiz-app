@@ -26,6 +26,8 @@ export class ViewRevenueComponent implements OnInit {
 
   ngOnInit(): void {
     this.totalRevenue();
+    this.statementTotal=0;
+
   }
 
   fetchRevenues() {
@@ -33,6 +35,7 @@ export class ViewRevenueComponent implements OnInit {
     this.revenueService.getRevenues(this.sDate, this.eDate).subscribe(data => {
       this.data = data;
       this.dataSource = this.data;
+      this.statementTotal=0;
       data.forEach(element => {
         this.statementTotal = this.statementTotal + element.amount;
       });
