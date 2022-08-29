@@ -27,6 +27,7 @@ import { UpdateQuestionComponent } from './pages/admin/update-question/update-qu
 import { QuizMaterialsComponent } from './pages/admin/quiz-materials/quiz-materials.component';
 import { ViewMaterialsComponent } from './pages/user/view-materials/view-materials.component';
 import { ViewRevenueComponent } from './pages/admin/view-revenue/view-revenue.component';
+import { TestHistoryComponent } from './pages/user/test-history/test-history.component';
 
 
 const routes: Routes = [
@@ -121,6 +122,10 @@ const routes: Routes = [
       {
         path:'materials/:id/:title',
         component:ViewMaterialsComponent
+      },
+      {
+        path:'testHistory/:id',
+        component:TestHistoryComponent
       }
     ]
   },

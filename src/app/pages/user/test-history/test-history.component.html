@@ -1,0 +1,38 @@
+<h1>Test History</h1>
+
+
+<table class="table table-striped" >
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">S.no</th>
+        <th scope="col">Date</th>
+        <th scope="col">QuizTitle</th>
+        <th scope="col">MarksGot</th>
+        <th scope="col">MaxMarks</th>
+        <th scope="col">NoOfQuestions</th>
+        <th scope="col">NoOfQuestionsAttempted</th>
+         <!-- <th scope="col">QuizId</th> -->
+        <!-- <th scope="col">UserId</th> 
+         -->
+        
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of test ;let i =index ">
+        <td>{{i+1}}</td>
+        <td>{{t.createdDate}}</td>
+        <td>{{t.quizTitle}}</td>
+        <td>{{t.marksGot}}</td>
+        <td>{{t.maxMarks}}</td>
+        <td>{{t.noOfQuestions}}</td>
+        <td>{{t.noOfQuestionsAttept}}</td>
+        <!-- <td>{{t.quiz.id}}</td> -->
+        <!-- <td>{{t.user.id}}</td>  -->
+        
+      </tr>
+      
+    </tbody>
+  </table>
+  

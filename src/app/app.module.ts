@@ -47,7 +47,8 @@ import { QuizMaterialsComponent } from './pages/admin/quiz-materials/quiz-materi
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ViewMaterialsComponent } from './pages/user/view-materials/view-materials.component';
 import { ViewRevenueComponent } from './pages/admin/view-revenue/view-revenue.component';
-import { MatTableModule } from '@angular/material/table'  
+import { MatTableModule } from '@angular/material/table';
+import { TestHistoryComponent } from './pages/user/test-history/test-history.component'  
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,7 +81,8 @@ import { MatTableModule } from '@angular/material/table'
     UpdateQuestionComponent,
     QuizMaterialsComponent,
     ViewMaterialsComponent,
-    ViewRevenueComponent
+    ViewRevenueComponent,
+    TestHistoryComponent
   ],
   imports: [
     BrowserModule,

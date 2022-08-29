@@ -34,7 +34,7 @@ export class QuizService {
   getQuiz(id: number): Observable<any> {
     return this._http.get<Quiz[]>(this.baseURL + "/" + id);
   }
-  
+
   //check if user is registred while loading quiz
   registeredStatus(id: number, qid: number): Observable<any> {
     return this._http.get<QuizPaymentStatus>(baseURL + "/quizPaymentStatus/paymentStatus/" + id + "/" + qid);
@@ -46,10 +46,13 @@ export class QuizService {
   }
 
   //add registration
-  addRegistrationStatus(quizPaymentStatus:any){
-    return this._http.post(baseURL+"/quizPaymentStatus/",quizPaymentStatus);
+  addRegistrationStatus(quizPaymentStatus: any) {
+    return this._http.post(baseURL + "/quizPaymentStatus/", quizPaymentStatus);
   }
 
+  addHistory(testhistory: any) {
+    return this._http.post("http://localhost:8080/history/addhistory/", testhistory);
+  }
 
 
 

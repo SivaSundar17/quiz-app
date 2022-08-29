@@ -19,16 +19,33 @@ export class StartComponent implements OnInit {
   quiz!: Quiz[];
   title!: string;
   marksGot = 0;
+  noOfQues = 0;
+  maximumMarks=0;
+  str!:string|null;
   correctAnswers = 0;
   uId!: number
   attempted = 0;
+  userId!:number
   isSubmit = false;
   status = {} as QuizPaymentStatus;
   total!:number;
-
+  testscore = {
+    quizTitle:"",
+    marksGot:0,
+    maxMarks:0,
+    noOfQuestions:0,
+    noOfQuestionsAttept:0,
+    user: {
+      id: 0
+    },
+    quiz: {
+      id: 0
+    }
+  }
   constructor(private quizService: QuizService,
     private route: ActivatedRoute,
-    private _question: QuestionService, private router: Router) { }
+    private _question: QuestionService, private router: Router,
+    private _quiz:QuizService) { }
 
   ngOnInit(): void {
     this.uId = Number(localStorage.getItem('id'))
@@ -36,9 +53,11 @@ export class StartComponent implements OnInit {
     this.title = this.route.snapshot.params['title']
     console.log(this.id)
     this.loadQuestions();
+    this.str=localStorage.getItem('id');
+    this.userId=Number(this.str);
 
   }
-
+ 
   loadQuestions() {
     this._question.getQuestionsOfQuiz(this.id).subscribe((data) => {
       this.questions = data;
@@ -52,6 +71,15 @@ export class StartComponent implements OnInit {
   evalQuiz() {
     this.isSubmit = true
     this.questions.forEach((q) => {
+      //noofquestions
+      this.noOfQues=this.questions.length;
+      console.log(this.noOfQues)
+      //mxmarks
+    this.maximumMarks=this.questions[0].quiz.maxMarks;
+     console.log(this.maximumMarks)
+     //title
+    this.title=this.questions[0].quiz.title
+    console.log(this.title)
       if (q.givenAnswer == q.answer) {
 
         this.correctAnswers++;
@@ -64,10 +92,12 @@ export class StartComponent implements OnInit {
       }
 
     })
+    this.addTestScore(this.id,this.marksGot,this.noOfQues,this.attempted,this.maximumMarks,this.title,this.userId);
     console.log(this.correctAnswers)
     console.log(this.marksGot)
     console.log("attempted" + this.attempted);
     this.changeRegistrationStatus();
+    
 
   }
 
@@ -84,5 +114,18 @@ export class StartComponent implements OnInit {
         });
     });
 
+  }
+  addTestScore(id:number,marksGot: number,noOfQues:number,attempted:number,maximumMarks:number,title:string,userId:number)
+  {
+    this.testscore.quiz.id=id;
+    this.testscore.user.id=userId;
+    this.testscore.quizTitle=title;
+    this.testscore.marksGot=marksGot;
+    this.testscore.noOfQuestions=noOfQues;
+    this.testscore.noOfQuestionsAttept=attempted;
+    this.testscore.maxMarks=maximumMarks;
+    this._quiz.addHistory(this.testscore).subscribe(data=>{
+
+    })
   }
 }

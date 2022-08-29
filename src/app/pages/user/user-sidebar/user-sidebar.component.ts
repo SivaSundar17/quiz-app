@@ -21,5 +21,10 @@ export class UserSidebarComponent implements OnInit {
     console.log("sidebar"+this.id)
     this.router.navigate(['/user/profile/'+this.id]);
   }
-
+  ViewTestHistory(){
+    this.str=localStorage.getItem('id');
+    this.id=Number(this.str);
+    console.log(this.id)
+    this.router.navigate(['/user/testHistory/'+this.id]);
+  }
 }
