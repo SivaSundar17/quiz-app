@@ -11,7 +11,7 @@ import { User } from 'src/app/model/user'
 })
 export class LoginComponent implements OnInit {
   ngOnInit(): void {
-    
+
     const roleFlag=localStorage.getItem("type")
     if(roleFlag=="ADMIN"){
       console.log("you are here")
