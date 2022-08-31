@@ -10,6 +10,7 @@ import { QuizService } from 'src/app/services/quiz.service';
 })
 export class ViewQuizzesComponent implements OnInit {
   quiz!: Quiz[];
+  p:number=1
   location: any;
   search:any;
   constructor(private quizservice: QuizService,

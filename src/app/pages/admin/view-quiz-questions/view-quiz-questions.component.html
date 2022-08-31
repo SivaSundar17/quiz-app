@@ -3,7 +3,7 @@
 <div class="bootstrap-wrapper">
     <div class="row">
         <div class="col-md-12">
-            <mat-card *ngFor="let q of question; let i = index" class="mt20" style="margin-bottom: 10px ;">
+            <mat-card *ngFor="let q of question | paginate:{itemsPerPage:5,currentPage:p} ; let i = index" class="mt20" style="margin-bottom: 10px ;">
                 <mat-card-content>
                     <p>
                         <b> Q ({{ i + 1 }}) </b>
@@ -42,4 +42,7 @@
         </div>
     </div>
     <button mat-raised-button color="accent" (click)="onAddQuestionClick()">Add Question</button>
+    
+<pagination-controls (pageChange)="p=$event" style="margin-top: 10px;"></pagination-controls>
+ 
 </div>

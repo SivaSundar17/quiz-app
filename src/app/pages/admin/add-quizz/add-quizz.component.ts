@@ -54,7 +54,7 @@ export class AddQuizzComponent implements OnInit {
         console.log(error);
       }
     );
-    alert("quiz added success fully");
+    alert("quiz added successfully");
     this.router.navigate(['admin/viewQuizzes'])
   }
 

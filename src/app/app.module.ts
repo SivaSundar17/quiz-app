@@ -48,7 +48,12 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ViewMaterialsComponent } from './pages/user/view-materials/view-materials.component';
 import { ViewRevenueComponent } from './pages/admin/view-revenue/view-revenue.component';
 import { MatTableModule } from '@angular/material/table';
-import { TestHistoryComponent } from './pages/user/test-history/test-history.component'  
+import { TestHistoryComponent } from './pages/user/test-history/test-history.component';
+import { ViewUsersComponent } from './pages/admin/view-users/view-users.component';
+import { UserScoresComponent } from './pages/admin/user-scores/user-scores.component'  
+import {NgxPaginationModule} from 'ngx-pagination';
+import { UserHomeComponent } from './pages/user/user-home/user-home.component';
+import { AdminHomeComponent } from './pages/admin/admin-home/admin-home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +87,11 @@ import { TestHistoryComponent } from './pages/user/test-history/test-history.com
     QuizMaterialsComponent,
     ViewMaterialsComponent,
     ViewRevenueComponent,
-    TestHistoryComponent
+    TestHistoryComponent,
+    ViewUsersComponent,
+    UserScoresComponent,
+    UserHomeComponent,
+    AdminHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +110,8 @@ import { TestHistoryComponent } from './pages/user/test-history/test-history.com
     MatButtonModule,
     MatProgressSpinnerModule,
     Ng2SearchPipeModule,
-    MatTableModule
+    MatTableModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,9 @@
-<h1>{{qTitle}}</h1>
+<h1></h1>
 <div class="bootstrap-wrapper">
     <div class="row mt20">
       <div class="col-md-12">
         <h1>
-          Add Question
+          Add Question in {{qTitle}}
         </h1>
   
          <mat-card>
@@ -72,6 +72,7 @@
                   <mat-form-field class="w100">
                     <mat-label>Enter Option3</mat-label>
                     <input
+                    required
                       [(ngModel)]="question.option3"
                       name="option3"
                       type="text"
@@ -84,6 +85,7 @@
                   <mat-form-field class="w100">
                     <mat-label>Enter Option4</mat-label>
                     <input
+                    required
                       [(ngModel)]="question.option4"
                       name="option4"
                       type="text"

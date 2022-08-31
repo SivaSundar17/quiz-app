@@ -1,10 +1,10 @@
 <mat-card>
     <mat-action-list>
         <div mat-subheader>Menu</div>
-        <button mat-list-item>Home</button>
+        <button mat-list-item routerLink="home">Home</button>
         <button mat-list-item (click)="onViewProfileClick()">View Profile</button>
         <button mat-list-item routerLink="viewQuizzes">View Quiz Topics</button>
-        <button mat-list-item (click)="ViewTestHistory()">View Test History</button>
+        <button mat-list-item (click)="ViewTestHistory()">View Quiz History</button>
         <!-- <button mat-list-item>View Materials</button> -->
     </mat-action-list>
 </mat-card>

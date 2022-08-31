@@ -5,6 +5,7 @@ export interface Revenue {
     user:{
         id:number;
         username:string;
+        Email:string;
     };
     quiz:{
         id:number;

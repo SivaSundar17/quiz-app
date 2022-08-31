@@ -1,0 +1,37 @@
+<h1>Registered Users</h1>
+<table mat-table [dataSource]="ELEMENT_DATA | paginate:{itemsPerPage:5,currentPage:p}" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="mobileNo">
+      <th mat-header-cell *matHeaderCellDef> Mobile number </th>
+      <td mat-cell *matCellDef="let element"> {{element.mobileNo}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="view">
+      <th mat-header-cell *matHeaderCellDef> Quiz Scores </th>
+      <td mat-cell (click)="getUserDetails(element)" *matCellDef="let element" ><a routerLink="/admin/userScores/{{element.id}}">View Quiz Scores</a> </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+     
+<pagination-controls (pageChange)="p=$event" style="margin-top: 30px;"></pagination-controls>
+ 

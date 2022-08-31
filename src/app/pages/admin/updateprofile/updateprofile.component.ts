@@ -30,6 +30,7 @@ export class UpdateprofileComponent implements OnInit {
   onSubmit(){
     this.profileservice.updateprofile(this.user.id,this.user).subscribe(
       data=>{
+        alert("Updated Successfully")
         this.gotoprofile();
       }) 
   }

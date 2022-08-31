@@ -73,5 +73,12 @@ export class UserService {
     localStorage.removeItem('data');
   }
 
+  getAllUsers(): Observable<Object> {
+    return this.http.get(baseURL + "/user/getUsers");
+  }
+
+  getUserById(id:number):Observable<User>{
+    return this.http.get<User>(baseURL+"/user/getUser/"+id);
+  }
 
 }

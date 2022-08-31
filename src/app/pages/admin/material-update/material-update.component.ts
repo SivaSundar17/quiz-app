@@ -14,23 +14,23 @@ export class MaterialUpdateComponent implements OnInit {
   files!: FileList;
   desc!: string;
   fileid!: number;
-  fileName!:string;
-  public data:Array<Material> = [];
+  fileName!: string;
+  public data: Array<Material> = [];
 
   constructor(private materialService: MaterialService,
-    private _route: ActivatedRoute,private router:Router) { }
+    private _route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.fileid = this._route.snapshot.params['id'];
 
     this.materialService.getMaterials().subscribe(
       (data: any) => {
-        this.data=data;
+        this.data = data;
         //console.log(this.data.fileName);
         this.data.forEach(element => {
-          if(element.id==this.fileid){
-            this.fileName=element.fileName;
-            this.desc=element.description;
+          if (element.id == this.fileid) {
+            this.fileName = element.fileName;
+            this.desc = element.description;
           }
         });
       },
@@ -87,15 +87,16 @@ export class MaterialUpdateComponent implements OnInit {
       //this.resportProgress(event);
     }
     );
-
+    alert("Material updated succesfully");
+    this.router.navigate(['admin/viewQuizzes'])
 
   }
-  onSubmitDesc(){
-    console.log(this.desc)
-    const formData=new FormData
+  onSubmitDesc() {
+    // console.log(this.desc)
+    const formData = new FormData
     formData.append('desc', this.desc);
-    this.materialService.updateFiledesc(this.fileid,formData).subscribe(ele=>{
-      console.log(ele);
+    this.materialService.updateFiledesc(this.fileid, formData).subscribe(ele => {
+      // console.log(ele);
     });
 
     alert("Description has been updated .")

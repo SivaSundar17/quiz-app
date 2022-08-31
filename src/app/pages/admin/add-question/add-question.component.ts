@@ -65,16 +65,13 @@ export class AddQuestionComponent implements OnInit {
     //form submit
     this._question.addQuestion(this.question).subscribe(
       (data: any) => {
-        alert("Question Added succesfully")
+        alert("Question Added succesfully.You can add another one or go back")
         this.question.content = '';
         this.question.option1 = '';
         this.question.option2 = '';
         this.question.option3 = '';
         this.question.option4 = '';
         this.question.answer = '';
-      },
-      (error) => {
-        alert("Add question failed")
       }
     );
   }

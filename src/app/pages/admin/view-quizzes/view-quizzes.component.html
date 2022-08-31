@@ -5,7 +5,7 @@
     <h1 style="margin: top 10px;margin-left: 5px;">
         Quiz Topics
       </h1>
-<mat-card class="mt10" *ngFor="let q of quiz | filter:search" style="margin: 10px;">
+<mat-card class="mt10" *ngFor="let q of quiz | filter:search | paginate:{itemsPerPage:3,currentPage:p}" style="margin: 10px;">
     <!-- //<h1 style="padding; ;">Available Quizes</h1> -->
     <mat-card-header>
         <div mat-card-avatar class="image"></div>
@@ -37,4 +37,7 @@
 <div class="container text-center " style="margin-top:15px ;">
     <button mat-raised-button color="accent" (click)="addQuizClick()">Add New Quiz</button>
 </div>
+
+<pagination-controls (pageChange)="p=$event" style="margin-top: 10px;"></pagination-controls>
+ 
 </div>

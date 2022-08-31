@@ -9,7 +9,7 @@ import { RevenueService } from 'src/app/services/revenue.service';
   styleUrls: ['./view-revenue.component.css']
 })
 export class ViewRevenueComponent implements OnInit {
-
+  p:number=1
   sDate!: string;
   eDate!: string;
   data!: Revenue[];
@@ -18,7 +18,7 @@ export class ViewRevenueComponent implements OnInit {
   totalRev!: Number
   statementTotal = 0;
 
-  displayedColumns: string[] = ['userId', 'userName', 'quizid', 'quizname', 'date', 'amount'];
+  displayedColumns: string[] = ['userId', 'userName','Email', 'quizid', 'quizname', 'date', 'amount'];
   dataSource = this.data;
 
 
@@ -37,6 +37,7 @@ export class ViewRevenueComponent implements OnInit {
       this.dataSource = this.data;
       this.statementTotal=0;
       data.forEach(element => {
+        // console.log(element.amount);
         this.statementTotal = this.statementTotal + element.amount;
       });
       //console.log(this.dataSource)

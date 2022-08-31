@@ -10,6 +10,7 @@ import { QuestionService } from 'src/app/services/question.service';
 })
 export class ViewQuizQuestionsComponent implements OnInit {
   questionid!: number
+  p:number=1
   qId!: number;
   qTitle!: string;
   question!: Question[];

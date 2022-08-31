@@ -9,6 +9,7 @@ import { TesthistoryService } from 'src/app/services/testhistory.service';
   styleUrls: ['./test-history.component.css']
 })
 export class TestHistoryComponent implements OnInit {
+  p:number=1
   searchValue!:string
   id!:number
   test!:Testhistory[]

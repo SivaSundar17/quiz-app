@@ -51,6 +51,7 @@ export class ChangeUserPasswordComponent implements OnInit {
     console.log("validated=" + this.valid)
     console.log(this.newPass + " " + this.confirmPass)
     if (this.valid && this.newPass === this.confirmPass) {
+      alert("Password Changed Successfully")
       this.user.password = this.newPass;
       this.profileservice.updateprofile(this.user.id, this.user).subscribe(
         data => {

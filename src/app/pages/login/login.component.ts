@@ -11,11 +11,19 @@ import { User } from 'src/app/model/user'
 })
 export class LoginComponent implements OnInit {
   ngOnInit(): void {
+    
+    const roleFlag=localStorage.getItem("type")
+    if(roleFlag=="ADMIN"){
+      console.log("you are here")
+      this.router.navigate(["/admin/home"])
+    }
+    if(roleFlag=="NORMAL"){
+      this.router.navigate(["/user/home"])
+    }
     //throw new Error('Method not implemented.');
   }
 
   submitted = false;
-  loggedIn = false;
   invalid !: boolean;
   userDetails = {} as User;
   name!: string
@@ -53,7 +61,8 @@ export class LoginComponent implements OnInit {
       this.userService.isLogged(val)
       if (val == "ADMIN") {
         this.invalid = false
-        this.router.navigate(['admin']);
+        // this.router.navigate(['admin']);
+        this.router.navigate(["/admin/home"])
         //this.userService.loginStatusSubject.next(true);
         this.userService.getCurrentUser(this.login.email).subscribe(val => {
           this.userDetails = val;
@@ -67,7 +76,7 @@ export class LoginComponent implements OnInit {
       if (val == "NORMAL") {
         this.invalid = false;
         //this.userService.storeDetails(val)
-        this.router.navigate(['user']);
+        this.router.navigate(['user/home']);
         //this.userService.loginStatusSubject.next(true);
         this.userService.getCurrentUser(this.login.email).subscribe(val => {
           this.userDetails = val;

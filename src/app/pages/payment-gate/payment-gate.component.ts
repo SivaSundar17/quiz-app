@@ -71,8 +71,8 @@ export class PaymentGateComponent implements OnInit {
               data => {
                 //console.log(this.data);
                 this.addRevenue();
-                this.router.navigate(['user/instructions/' + this.qid + "/" + this.title])
-                localStorage.removeItem("qid");
+                // this.router.navigate(['user/instructions/' + this.qid + "/" + this.title])
+                // localStorage.removeItem("qid");
               }
             );
           }
@@ -82,11 +82,11 @@ export class PaymentGateComponent implements OnInit {
             this.quizService.updateRegistrationStatus(this.status.id, this.status).subscribe(
               data => {
                 //this.gotoprofile();
-                console.log(data);
+                // console.log(data);
                 this.addRevenue();
-                this.router.navigate(['user/instructions/' + this.qid + "/" + this.title])
-                localStorage.removeItem("qid");
-                localStorage.removeItem("title")
+                // this.router.navigate(['user/instructions/' + this.qid + "/" + this.title])
+                // localStorage.removeItem("qid");
+                // localStorage.removeItem("title")
               });
           }
           // console.log(this.isRegistered);
@@ -118,10 +118,14 @@ export class PaymentGateComponent implements OnInit {
     this.checkoutService.addRevenue(this.rev).subscribe(
       data => {
         // console.log(this.rev);
-        console.log("Statement added");
-        localStorage.removeItem("amount");
+        // console.log("Statement added");
+        // localStorage.removeItem("amount");
       }
     )
+    console.log("user/instructions/" + this.qid + "/" + this.title);
+    this.router.navigate(['/user/instructions/' + this.qid + "/" + this.title])
+    localStorage.removeItem("qid");
+    localStorage.removeItem("title")
   }
 
 }

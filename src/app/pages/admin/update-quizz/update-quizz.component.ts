@@ -13,10 +13,10 @@ export class UpdateQuizzComponent implements OnInit {
   id!: number;
   // quiz!:Quiz[];
   quiz = {} as Quiz;
-  quizz = {
-    test: "kaushik",
-    marks: "100"
-  }
+  // quizz = {
+  //   test: "kaushik",
+  //   marks: "100"
+  // }
 
 
   constructor(private quizservice: QuizService,
@@ -30,12 +30,12 @@ export class UpdateQuizzComponent implements OnInit {
   }
 
   onSubmit() {
+    alert("Updated Quiz Successfully")
     this.quizservice.updateQuiz(this.quiz.id, this.quiz).subscribe(
-      data => {
+      (data) => {
 
         this.gotoquizzes();
-      }, error => console.log(error));
-    console.log("submited")
+      });
 
   }
   getQuizByid(id: number) {

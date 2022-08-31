@@ -9,7 +9,7 @@ import { QuizService } from 'src/app/services/quiz.service';
   styleUrls: ['./load-quiz.component.css']
 })
 export class LoadQuizComponent implements OnInit {
-
+  p:number=1
   id!: number
   quiz!: Quiz[];
   search:any;

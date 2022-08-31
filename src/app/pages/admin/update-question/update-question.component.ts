@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import Swal from 'sweetalert2';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { QuestionService } from 'src/app/services/question.service';
 import { ViewQuizQuestionsComponent } from '../view-quiz-questions/view-quiz-questions.component';
 import { Question } from 'src/app/model/question';
@@ -13,7 +11,6 @@ import { Question } from 'src/app/model/question';
 })
 export class UpdateQuestionComponent implements OnInit {
   //questionid!:number
-  public Editor = ClassicEditor;
   quesId!: number;
   qTitle!:string;
   question = {
@@ -57,16 +54,13 @@ export class UpdateQuestionComponent implements OnInit {
     //form submit
     this._question.updateQuestion(this.question,this.quesId).subscribe(
       (data: any) => {
-        Swal.fire('Success ', 'Question Added. Add Another one', 'success');
+        alert('Question added successfully.',);
         this.question.content = '';
         this.question.option1 = '';
         this.question.option2 = '';
         this.question.option3 = '';
         this.question.option4 = '';
         this.question.answer = '';
-      },
-      (error) => {
-        Swal.fire('Error', 'Error in adding question', 'error');
       }
     );
   }

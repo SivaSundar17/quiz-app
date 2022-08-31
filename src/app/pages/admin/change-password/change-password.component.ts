@@ -45,15 +45,17 @@ getUserdetailsById(){
 }
 onSubmit(){
   //console.log("in onSubmit() method"+this.oldPass)
-
   this.valid=this.validate(this.oldPass);
 
-  console.log("validated="+this.valid)
-  console.log(this.newPass+" "+this.confirmPass)
+  // console.log("validated="+this.valid)
+  // console.log(this.newPass+" "+this.confirmPass)
   if(this.valid && this.newPass===this.confirmPass){
     this.user.password=this.newPass;
+    alert("Password updated successfully")
     this.profileservice.updateprofile(this.user.id,this.user).subscribe(
       data=>{ 
+        
+        this.gotoprofile();
       })
   }
   if(!this.valid){
@@ -72,11 +74,11 @@ onSubmit(){
 //   //console.log(this.quizservice.getQuiz());
 // }
 gotoprofile() {
-  this.router.navigate(['/profile']);
+  this.router.navigate(['admin/profile',this.user.id]);
 }
 
 getPassword(){
-  console.log(this.actualPass)
+  // console.log(this.actualPass)
   return this.actualPass;
 }
 

@@ -2,7 +2,7 @@
     <input type="text"  [(ngModel)]="search" class="form-control" placeholder="search" style="margin-top: 10px;">
   </div>
 <h1>Quiz Topics</h1>
-<mat-card class="mt10" *ngFor="let q of quiz | filter:search">
+<mat-card class="mt10" *ngFor="let q of quiz | filter:search| paginate:{itemsPerPage:3,currentPage:p}">
 
     <mat-card-header>
         <div mat-card-avatar class="image"></div>
@@ -17,7 +17,7 @@
     <mat-card-actions>
         <!-- <button mat-flat-button  color="primary" class="mr10">Register</button> -->
 
-        <button mat-flat-button color="primary" class="mr10">View</button>
+        <!-- <button mat-flat-button color="primary" class="mr10">View</button> -->
         <button mat-flat-button (click)="onStartClick(q.id,q.title)" color="accent" class="mr10">Take test</button>
         <button mat-flat-button  (click)="onMaterialsClick(q.id,q.title)"  color="accent" class="mr10">Materials</button>
         <button mat-stroked-button color="accent">
@@ -30,6 +30,8 @@
     </mat-card-actions>
 </mat-card>
 
+<pagination-controls (pageChange)="p=$event" style="margin-top: 10px;"></pagination-controls>
+ 
 <!-- <div class="container text-center " style="margin-top:15px ;">
     <button   mat-raised-button color="accent">Add New Quiz</button>
 </div>  -->
