@@ -47,11 +47,6 @@ export class AddQuizzComponent implements OnInit {
           noOfQuestions: '',
           price: ''
         };
-      },
-
-      (error) => {
-        //Swal.fire('Error!! ', 'Error while adding quiz', 'error');
-        console.log(error);
       }
     );
     alert("quiz added successfully");

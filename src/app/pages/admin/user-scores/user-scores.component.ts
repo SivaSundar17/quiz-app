@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-scores.component.css']
 })
 export class UserScoresComponent implements OnInit {
-
+p:number=1
   searchValue!:string;
   id!:number;
   test!:Testhistory[];

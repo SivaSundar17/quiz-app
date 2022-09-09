@@ -50,8 +50,8 @@ onSubmit(){
   // console.log("validated="+this.valid)
   // console.log(this.newPass+" "+this.confirmPass)
   if(this.valid && this.newPass===this.confirmPass){
-    this.user.password=this.newPass;
     alert("Password updated successfully")
+    this.user.password=this.newPass;
     this.profileservice.updateprofile(this.user.id,this.user).subscribe(
       data=>{ 
         

@@ -11,40 +11,38 @@ import { MaterialService } from 'src/app/services/material.service';
 })
 export class ViewMaterialsComponent implements OnInit {
   public data: Array<Material> = [];
-  desc!:string
+  desc!: string
   qId!: number;
-  title!:string;
+  title!: string;
 
-  constructor(private materialService:MaterialService,private _route: ActivatedRoute,private router: Router,private http: HttpClient) { }
+  constructor(private materialService: MaterialService, private _route: ActivatedRoute, private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.qId = this._route.snapshot.params['id'];
-    this.title=this._route.snapshot.params['title']
+    this.title = this._route.snapshot.params['title']
     this.getQuizMaterials();
   }
 
-  getQuizMaterials(){
+  getQuizMaterials() {
     this.materialService.getMaterialsByQuizId(this.qId).subscribe(val => {
       this.data = val;
       val.forEach(element => {
-        element.fileName=element.fileName.split('.pdf').join("");
+        element.fileName = element.fileName.split('.pdf').join("");
       });
     })
-    
+
   }
-//download file
-  clickedfun(id:number,name:string):void{
+  //download file
+  clickedfun(id: number, name: string): void {
     console.log(id);
-    this.materialService.getMaterialsbyId(id).subscribe(response=>{
-      let fname=response.headers.get('CONTENT-DISPOSITION')
-       ?.split(' ')[1].split('filename=')[1].trim();
+    this.materialService.getMaterialsbyId(id).subscribe(response => {
 
-      let blob:Blob=response.body as Blob;
+      let blob: Blob = response.body as Blob;
 
-      let a=document.createElement('a');
-      a.download=name;
+      let a = document.createElement('a');
+      a.download = name;
 
-      a.href=window.URL.createObjectURL(blob);
+      a.href = window.URL.createObjectURL(blob);
       a.click();
       //this.router.navigate(['admin']);
       //navigate to localhost:4200/updateMaterial/{id}

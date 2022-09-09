@@ -28,7 +28,7 @@
             </div>
         </mat-card>
         <br>
-        <table *ngIf="isSearched" mat-table [dataSource]="dataSource | paginate:{itemsPerPage:7,currentPage:p}" class="mat-elevation-z8 sa1">
+        <table *ngIf="isSearched" mat-table [dataSource]="dataSource | paginate:{itemsPerPage:5,currentPage:p}" class="mat-elevation-z8 sa1">
 
             <ng-container matColumnDef="userId">
                 <th mat-header-cell *matHeaderCellDef> User Id</th>
@@ -72,8 +72,8 @@
         <mat-card class="sa1" *ngIf="isSearched">
             <h1>Total&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;Rs &nbsp;&nbsp;&nbsp;&nbsp; {{statementTotal}}</h1>
         </mat-card>
+        <pagination-controls (pageChange)="p=$event" style="margin-top: 10px;"></pagination-controls>
+
     </div>
-    
-<pagination-controls (pageChange)="p=$event" style="margin-top: 10px;"></pagination-controls>
- 
+     
 </div>

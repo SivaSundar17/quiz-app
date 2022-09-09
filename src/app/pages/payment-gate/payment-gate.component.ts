@@ -22,8 +22,12 @@ export class PaymentGateComponent implements OnInit {
 
   statusObj = {
     paymentStatus: false,
-    quizId: 0,
-    userId: 0
+    user:{
+      id:0
+    },
+    quiz:{
+      id:0
+    }
   }
 
   rev = {
@@ -64,9 +68,9 @@ export class PaymentGateComponent implements OnInit {
           if (data == null) {
             //this.isRegistered=false;
             //console.log(this.uId+" "+this.qid);
-            this.statusObj.userId = this.uId;
+            this.statusObj.user.id = this.uId;
             this.statusObj.paymentStatus = true,
-              this.statusObj.quizId = this.qid
+              this.statusObj.quiz.id = this.qid
             this.quizService.addRegistrationStatus(this.statusObj).subscribe(
               data => {
                 //console.log(this.data);

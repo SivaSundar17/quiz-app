@@ -1,7 +1,7 @@
 <h1>Quiz Scores</h1>
 
 <mat-card class="col-mid-3">
-    <p><b>UtserName : {{userVal.username}}</b></p>
+    <p><b>UserName : {{userVal.username}}</b></p>
     <p><b>Email :{{userVal.email}}</b></p>
     <p><b>Mobile Number :{{userVal.mobileNo}}</b></p>
 </mat-card>
@@ -25,7 +25,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let t of test ;let i =index ">
+      <tr *ngFor="let t of test|paginate:{itemsPerPage:5,currentPage:p} ;let i =index ">
         <td>{{i+1}}</td>
         <td>{{t.createdDate}}</td>
         <td>{{t.quizTitle}}</td>
@@ -37,7 +37,8 @@
         <!-- <td>{{t.user.id}}</td>  -->
         
       </tr>
-      
     </tbody>
   </table>
+  <pagination-controls (pageChange)="p=$event" style="margin-top: 10px;"></pagination-controls>
+
   

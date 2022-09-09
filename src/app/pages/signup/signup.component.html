@@ -6,9 +6,9 @@
             <div class="col-md-6 offset-md-3">
                 <div class="card">
                     <h4 class="card-header">Register</h4>
-                    {{data|json}}
+                    <!-- {{data|json}} -->
                     <div class="card-body">
-                        <form (ngSubmit)="formSubmit()" [formGroup]="signUpForm" >
+                        <form (ngSubmit)="formSubmit()" [formGroup]="signUpForm" ngNativeValidate >
                             <div class="cross-validation"
                                 [class.cross-validation-error]="signUpForm.errors?.['mustMatch']">
                                 <div class="form-group">
@@ -36,7 +36,7 @@
                                 <div class="form-group">
                                     <label for="mobile">Mobile Number</label>
                                     <input type="text" [(ngModel)]="data.mobileNo" name="mobileNo" class="form-control"
-                                        formControlName="mobileNo" />
+                                        formControlName="mobileNo" maxlength="10" />
                                     <div *ngIf="submitted && form['mobileNo'].errors?.['required']" style="color:red;">
                                         Mobile number is required.
                                     </div>

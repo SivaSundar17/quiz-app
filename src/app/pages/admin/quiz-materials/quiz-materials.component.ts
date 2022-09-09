@@ -35,8 +35,6 @@ export class QuizMaterialsComponent implements OnInit {
   clickedfun(id:number,name:string):void{
     console.log(id);
     this.materialService.getMaterialsbyId(id).subscribe(response=>{
-      let fname=response.headers.get('CONTENT-DISPOSITION')
-       ?.split(' ')[1].split('filename=')[1].trim();
 
       let blob:Blob=response.body as Blob;
 
